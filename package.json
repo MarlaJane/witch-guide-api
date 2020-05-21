@@ -1,0 +1,31 @@
+{
+  "name": "witch-guide-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm run lint:pug && npm run lint:eslint",
+    "lint:pug": "./node_modules/.bin/pug-lint .",
+    "lint:eslint": "./node_modules/.bin/eslint --format codeframe .",
+    "dev": "./node_modules/.bin/nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarlaJane/witch-guide-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarlaJane/witch-guide-api/issues"
+  },
+  "homepage": "https://github.com/MarlaJane/witch-guide-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "nodemon": "^2.0.4",
+    "pug-lint": "^2.6.0"
+  }
+}
