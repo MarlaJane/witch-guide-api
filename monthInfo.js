@@ -16,69 +16,52 @@ const months = [{
 }, {
   name: 'April',
   moon: 'Pink',
-  activities: {
-    witches_garden: 'Growing your magic on earth and in spirit.'
-  },
+  activities: 'witches garden',
   slug: 'april'
 }, {
   name: 'May',
   moon: 'Flower',
-  activities: {
-    faerie_magic_and_friendships: 'Inviting faeries to spells and rituals.'
-  },
+  activities: 'faerie magic and friendships',
   slug: 'may'
 }, {
   name: 'June',
   moon: 'Honey',
-  activities: {
-    scrying_with_fire: 'Divining the wisdom of the flames.'
-  },
+  activities: 'scrying with fire',
   slug: 'june'
 }, {
   name: 'July',
   moon: 'Thunder',
-  activities: {
-    sea_witchery: ''
-  },
+  activities: 'sea witchery',
   slug: 'july'
 }, {
   name: 'August',
   moon: 'Corn',
-  activities: {
-    spellcasting_icepops: ''
-  },
+  activities: 'spellcasting icepops',
   slug: 'aug'
 }, {
   name: 'September',
   moon: 'Harvest',
-  activities: {
-    scrying_with_water: ''
-  },
+  activities: 'scrying with water',
   slug: 'sept'
 }, {
   name: 'October',
   moon: 'Hunters',
-  activities: {
-    keys_to_crossroads: ''
-  },
+  activities: 'keys to crossroads',
   slug: 'oct'
 }, {
   name: 'November',
   moon: 'Snow',
-  activities: {
-    words_of_power: ''
-  },
+  activities: 'words of power',
   slug: 'nov'
 }, {
   name: 'December',
   moon: 'Oak',
-  activities: {
-    scrying_with_earth: ''
-  },
+  activities: 'scrying with earth',
   slug: 'dec'
 }, {
   name: 'Situational',
   moon: 'Blue',
+  activities: 'misc',
   slug: 'two'
 }]
 

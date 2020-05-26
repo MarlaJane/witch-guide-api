@@ -1,33 +1,62 @@
-const months = require('../monthInfo')
+const models = require('../models')
 
-const getAllMonths = (request, response) => {
+const getAllMonths = async (request, response) => {
+  const months = await models.Months.findAll()
+
   return response.send(months)
 }
 
-const getMonthByName = (request, response) => {
+const getMonthByName = async (request, response) => {
   const { name } = request.params
 
-  const foundName = months.filter((months) => months.name === name)
+  const foundName = await models.Months.findOne({ where: { name } })
 
-  return response.send(foundName)
+  return foundName
+    ? response.send(foundName)
+    : response.sendStatus(404)
 }
 
 const getMonthByMoon = async (request, response) => {
   const { moon } = request.params
 
-  const foundMoon = await months.filter((months) => months.moon === moon)
+  const foundMoon = await models.Months.findOne({ where: { moon } })
 
-  return response.send(foundMoon)
+  return foundMoon
+    ? response.send(foundMoon)
+    : response.sendStatus(404)
 }
 
-const getMonthBySlug = (request, response) => {
+const getMonthBySlug = async (request, response) => {
   const { slug } = request.params
 
-  const foundSlug = months.filter((months) => months.slug === slug)
+  const foundSlug = models.Months.findOne({ where: { slug } })
 
-  return response.send(foundSlug)
+  return foundSlug
+    ? response.send(foundSlug)
+    : response.sendStatus(404)
 }
 
-// const addNew > finish when info is orgaized
+const addMonth = async (request, response) => {
+  const {
+    name, moon, activities, slug
+  } = request.body
 
-module.exports = (getAllMonths, getMonthBySlug, getMonthByMoon, getMonthByName)
+
+  if (!name || !moon || !activities || !slug) {
+    return response.status(400).send('Please provide requested data.')
+  }
+
+  const newMonth = await models.Months.create({
+    name, moon, activities, slug
+  })
+
+  return response.status(201).send(newMonth)
+}
+
+module.exports = {
+  getAllMonths,
+  getMonthBySlug,
+  getMonthByMoon,
+  getMonthByName,
+  addMonth
+}
