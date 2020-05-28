@@ -17,58 +17,66 @@ CREATE TABLE Months (
   PRIMARY KEY(id)
 );
 
-INSERT INTO Months (name) VALUES ("January");
-INSERT INTO Months (name) VALUES ("February");
-INSERT INTO Months (name) VALUES ("March");
-INSERT INTO Months (name) VALUES ("April");
-INSERT INTO Months (name) VALUES ("May");
-INSERT INTO Months (name) VALUES ("June");
-INSERT INTO Months (name) VALUES ("July");
-INSERT INTO Months (name) VALUES ("August");
-INSERT INTO Months (name) VALUES ("September");
-INSERT INTO Months (name) VALUES ("October");
-INSERT INTO Months (name) VALUES ("November");
-INSERT INTO Months (name) VALUES ("December");
-INSERT INTO Months (name) VALUES ("Situational");
+INSERT INTO Months (name, slug) VALUES ("January", "jan");
+INSERT INTO Months (name, slug) VALUES ("February", "feb");
+INSERT INTO Months (name, slug) VALUES ("March" , "march");
+INSERT INTO Months (name, slug) VALUES ("April", "april");
+INSERT INTO Months (name, slug) VALUES ("May", "may");
+INSERT INTO Months (name, slug) VALUES ("June", "june" );
+INSERT INTO Months (name, slug) VALUES ("July", "july"  );
+INSERT INTO Months (name, slug) VALUES ("August", "august" );
+INSERT INTO Months (name, slug) VALUES ("September","sept" );
+INSERT INTO Months (name, slug) VALUES ("October", "oct");
+INSERT INTO Months (name, slug) VALUES ("November", "nov");
+INSERT INTO Months (name, slug) VALUES ("December", "dec" );
+INSERT INTO Months (name, slug) VALUES ("Situational", "two" );
 
-INSERT INTO Months (moon) VALUES ("Wolf");
-INSERT INTO Months (moon) VALUES ("Storm");
-INSERT INTO Months (moon) VALUES ("Seed");
-INSERT INTO Months (moon) VALUES ("Pink");
-INSERT INTO Months (moon) VALUES ("Flower");
-INSERT INTO Months (moon) VALUES ("Honey");
-INSERT INTO Months (moon) VALUES ("Thunder");
-INSERT INTO Months (moon) VALUES ("Corn");
-INSERT INTO Months (moon) VALUES ("Harvest");
-INSERT INTO Months (moon) VALUES ("Hunters");
-INSERT INTO Months (moon) VALUES ("Snow");
-INSERT INTO Months (moon) VALUES ("Oak");
-INSERT INTO Months (moon) VALUES ("Blue");
+USE witches;
+CREATE TABLE Moons (
+  id INT auto_increment,
+  name VARCHAR(255) NOT NULL;
+  monthName VARCHAR(255) NOT NULL;
+  createdAt DATETIME DEFAULT NOW(),
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  deletedAt DATETIME,
+  PRIMARY KEY(id)
+);
 
-INSERT INTO Months (activities) VALUES ("animal stich witchery");
-INSERT INTO Months (activities) VALUES ("candle craft");
-INSERT INTO Months (activities) VALUES ("scrying with air");
-INSERT INTO Months (activities) VALUES ("witches garden");
-INSERT INTO Months (activities) VALUES ("faerie magic and friendships");
-INSERT INTO Months (activities) VALUES ("scrying with fire");
-INSERT INTO Months (activities) VALUES ("sea witchery");
-INSERT INTO Months (activities) VALUES ("spellcasting icepops");
-INSERT INTO Months (activities) VALUES ("scrying with water");
-INSERT INTO Months (activities) VALUES ("keys to crossroads");
-INSERT INTO Months (activities) VALUES ("words of power");
-INSERT INTO Months (activities) VALUES ("scrying with earth");
-INSERT INTO Months (activities) VALUES ("misc");
+INSERT INTO Moons (name, monthName) VALUES ("Wolf", "January");
+INSERT INTO Moons (name, monthName) VALUES ("Storm", "February");
+INSERT INTO Moons (name, monthName) VALUES ("Seed", "March");
+INSERT INTO Moons (name, monthName) VALUES ("Pink", "April");
+INSERT INTO Moons (name, monthName) VALUES ("Flower", "May");
+INSERT INTO Moons (name, monthName) VALUES ("Honey", "June");
+INSERT INTO Moons (name, monthName) VALUES ("Thunder", "July");
+INSERT INTO Moons (name, monthName) VALUES ("Corn", "August");
+INSERT INTO Moons (name, monthName) VALUES ("Harvest", "September");
+INSERT INTO Moons (name, monthName) VALUES ("Hunters", "October");
+INSERT INTO Moons (name, monthName) VALUES ("Snow", "November");
+INSERT INTO Moons (name, monthName) VALUES ("Oak", "December");
+INSERT INTO Moons (name, monthName) VALUES ("Blue", "Situational");
 
-INSERT INTO Months (slug) VALUES ("jan");
-INSERT INTO Months (slug) VALUES ("feb");
-INSERT INTO Months (slug) VALUES ("march");
-INSERT INTO Months (slug) VALUES ("april");
-INSERT INTO Months (slug) VALUES ("may");
-INSERT INTO Months (slug) VALUES ("june");
-INSERT INTO Months (slug) VALUES ("july");
-INSERT INTO Months (slug) VALUES ("aug");
-INSERT INTO Months (slug) VALUES ("sept");
-INSERT INTO Months (slug) VALUES ("oct");
-INSERT INTO Months (slug) VALUES ("nov");
-INSERT INTO Months (slug) VALUES ("dec");
-INSERT INTO Months (slug) VALUES ("two");
+USE witches;
+CREATE TABLE Activities (
+  id INT auto_increment,
+  name VARCHAR(255) NOT NULL;
+  monthName VARCHAR(255) NOT NULL;
+  moonName VARCHAR(255) NOT NULL;
+  createdAt DATETIME DEFAULT NOW(),
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  deletedAt DATETIME,
+  PRIMARY KEY(id)
+
+INSERT INTO Activities (name, monthName, moonName) VALUES ("animal stich witchery", "January", "Wolf");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("candle craft", "February", "Storm");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("scrying with air", "March", "Seed");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("witches garden", "April", "Pink");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("faerie magic and friendships", "May", "Flower");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("scrying with fire", "June", "Honey");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("sea witchery", "July", "Thunder");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("spellcasting icepops", "August", "Corn");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("scrying with water", "September", "Harvest");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("keys to crossroads", "October", "Hunters");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("words of power", "November", "Snow");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("scrying with earth", "December", "Oak");
+INSERT INTO Activities (name, monthName, moonName) VALUES ("misc", "Situational", "Blue");

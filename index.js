@@ -1,9 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const { getAllMonths, getMonthByName, getMonthBySlug } = require('./controllers/months')
+const { getAllMoons, getMoonByName, getMoonByMonth } = require('./controllers/moons')
 const {
-  addMonth, getMonthByMoon, getAllMonths, getMonthByName, getMonthBySlug
-} =
-  require('./controllers/months')
+  getAllActivities, getActivitiesByMonth,
+  getActivitiesByMoon, addActivities, deleteActivities
+} = require('./controllers/activities')
+
 
 const app = express()
 
@@ -16,14 +19,18 @@ app.use(bodyParser.json())
 app.get('/', (request, response) => response.render('index'))
 
 app.get('/months', getAllMonths)
+app.get('/months/:name', getMonthByName)
+app.get('/months/:slug', getMonthBySlug)
 
-app.get('/:moon', getMonthByMoon)
+app.get('/moons', getAllMoons)
+app.get('/moons/:name', getMoonByName)
+app.get('/moons/month/:monthId', getMoonByMonth)
 
-app.get('/:name', getMonthByName)
-
-app.get('/:slug', getMonthBySlug)
-
-app.post('/months', addMonth)
+app.get('/activities', getAllActivities)
+app.get('/activities/month/:monthId', getActivitiesByMonth)
+app.get('/activities/moon/:moonId', getActivitiesByMoon)
+app.post('/activities', addActivities)
+app.delete('/activities/:name', deleteActivities)
 
 app.all('*', (request, response) => {
   return response.status(404).send("Witch don't kill my vibe! Try again.")

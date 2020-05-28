@@ -1,12 +1,10 @@
-const months = (connection, Sequelize) => {
+const Months = (connection, Sequelize) => {
   return connection.define('Months', {
-    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-    name: { type: Sequelize.STRING },
-    moon: { type: Sequelize.STRING },
-    activities: { type: Sequelize.STRING },
-    slug: { type: Sequelize.STRING },
+    id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },
+    name: { type: Sequelize.STRING, allowNull: false },
+    slug: { type: Sequelize.STRING, allowNull: false },
   }, { paranoid: true })
 }
 
-module.exports = months
+module.exports = Months
 
