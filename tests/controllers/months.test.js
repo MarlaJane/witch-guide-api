@@ -110,7 +110,7 @@ describe('Controllers - months', () => {
     })
 
     describe('getMonthBySlug', () => {
-      it('retrieves the months associated with the provided slug', async () => {
+      it('retrieves the month associated with the provided slug', async () => {
         stubbedMonthsFindOne.returns(singleMonth)
 
         const request = { params: { slug: 'jan' } }

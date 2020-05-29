@@ -31,27 +31,23 @@ doctype html
         div(id= "get-moons-name-end-point", class="end-point")
           a(onclick="activateEndpoint('get-moons-name')")
             span(class="get") GET
-            | /moons/{name}
-        div(id= "get-moons-monthName-end-point", class="end-point")
-          a(onclick="activateEndpoint('get-moons-monthName')")
+            | /moons/:name
+        div(id= "get-moons-monthId-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-moons-monthId')")
             span(class="get") GET
-            | /moons/{monthName}
+            | /moons/{monthId}
         div(id= "get-activities-end-point", class="end-point newRoute")
           a(onclick="activateEndpoint('get-activities')")
             span(class="get") GET
             | /activities
-        div(id= "get-activities-name-end-point", class="end-point")
-          a(onclick="activateEndpoint('get-activities-name')")
+        div(id= "get-activities-monthId-end-point", class="end-point ")
+          a(onclick="activateEndpoint('get-activities-monthId')")
             span(class="get") GET
-            | /activities/{name}
-        div(id= "get-activities-monthName-end-point", class="end-point ")
-          a(onclick="activateEndpoint('get-activities-monthName')")
+            | /activities/{monthId}
+        div(id= "get-activities-moonId-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-activities-moonId')")
             span(class="get") GET
-            | /activities/{monthName}
-        div(id= "get-activities-moonName-end-point", class="end-point")
-          a(onclick="activateEndpoint('get-activities-moonName')")
-            span(class="get") GET
-            | /activities/{moonName}
+            | /activities/{moonId}
         div(id= "post-activities-end-point", class="end-point ")
           a(onclick="activateEndpoint('post-activities')")
             span(class="post") POST
@@ -59,7 +55,7 @@ doctype html
         div(id= "delete-activities-name-end-point", class="end-point")
           a(onclick="activateEndpoint('delete-activities-name')")
             span(class="delete") DELETE
-            | /activities/{name}
+            | /activities/{id}
     div(id="get-months-doc-months", class="doc")
       include partials/docs/months/getAll.pug
     div(id="get-months-doc", class="doc hidden")

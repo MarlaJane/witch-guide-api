@@ -43,35 +43,35 @@ const getActivitiesByMonth = async (request, response) => {
 }
 
 const addActivities = async (request, response) => {
-  // try {
-  const { name, moonId, monthId } = request.body
+  try {
+    const { name, moonId, monthId } = request.body
 
 
-  if (!name || !moonId || !monthId) {
-    return response.status(400).send('Please provide requested data.')
+    if (!name || !moonId || !monthId) {
+      return response.status(400).send('Please provide requested data.')
+    }
+
+    const [newActivity] = await models.Activities.findOrCreate({ where: { name }, defaults: { moonId, monthId } })
+
+    Promise.resolve(newActivity)
+
+    return response.status(201).send(newActivity)
+  } catch (error) {
+    return response.status(500).send('Error')
   }
-
-  const [newActivity] = await models.Activities.findOrCreate({ where: { name }, defaults: { moonId, monthId } })
-
-  Promise.resolve(newActivity)
-
-  return response.status(201).send(newActivity)
-  // } catch (error) {
-  // return response.status(500).send('Error')
-  //}
 }
 
 const deleteActivities = async (request, response) => {
   try {
-    const name = request.body.name
+    const { id } = request.params
     const activity = await models.Activities.findOne({
-      where: { name }
+      where: { id }
     })
 
     if (!activity) return response.status(404).send('Error')
 
-    await models.Activities.destory({
-      where: { name }
+    await models.Activities.destroy({
+      where: { id }
     })
 
     return response.send('Successfully deleted.')
@@ -79,8 +79,6 @@ const deleteActivities = async (request, response) => {
     return response.status(500).send('Error')
   }
 }
-
-// this is a patch but would need me to add a description for activities const updateActivities
 
 
 module.exports = {

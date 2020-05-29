@@ -26,5 +26,5 @@ module.exports = {
   Months,
   Moons,
   Activities,
-  // Sequelize,
+  Sequelize,
 }

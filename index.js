@@ -30,7 +30,7 @@ app.get('/activities', getAllActivities)
 app.get('/activities/month/:monthId', getActivitiesByMonth)
 app.get('/activities/moon/:moonId', getActivitiesByMoon)
 app.post('/activities', addActivities)
-app.delete('/activities/:name', deleteActivities)
+app.delete('/activities/:id', deleteActivities)
 
 app.all('*', (request, response) => {
   return response.status(404).send("Witch don't kill my vibe! Try again.")

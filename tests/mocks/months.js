@@ -1,16 +1,13 @@
 const singleMonth = {
-  name: 'December',
-  activities: 'scrying with earth',
-  slug: 'dec'
+  name: 'January',
+  slug: 'jan'
 }
 
 const monthList = [{
-  name: 'December',
-  activities: 'scrying with earth',
-  slug: 'dec'
+  name: 'January',
+  slug: 'jan'
 }, {
   name: 'Situational',
-  activities: 'misc',
   slug: 'two'
 }]
 

@@ -12,7 +12,7 @@ const getAllMonths = async (request, response) => {
 
 const getMonthByName = async (request, response) => {
   try {
-    const { name } = request.params.name
+    const { name } = request.params
 
     const foundName = await models.Months.findOne({
       where: { name }
@@ -28,7 +28,7 @@ const getMonthByName = async (request, response) => {
 
 const getMonthBySlug = async (request, response) => {
   try {
-    const { slug } = request.params.slug
+    const { slug } = request.params
 
     const foundSlug = models.Months.findOne({
       where: { slug }

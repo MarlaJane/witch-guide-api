@@ -9,7 +9,6 @@ const {
 const { postedActivity, singleActivity, relatedActivities, activitiesList } = require('../mocks/activities')
 const {
   getAllActivities,
-  getActivitiesByName,
   getActivitiesByMonth,
   getActivitiesByMoon,
   addActivities,
@@ -70,48 +69,6 @@ describe('Controllers - activities', () => {
         await getAllActivities({}, response)
 
         expect(stubbedActivitiesFindAll).to.have.been.calledWith({ include: [{ model: models.Activities }] })
-        expect(response.status).to.have.been.calledWith(500)
-        expect(stubbedStatusSend).to.have.been.calledWith('Error while retrieving.')
-      })
-    })
-
-    describe('getActivitiesByName', () => {
-      it('retrieves the activities associated with the provided name', async () => {
-        stubbedActivitiesFindOne.returns(singleActivity)
-
-        const request = { params: { name: 'animal stitch witchery' } }
-
-        await getActivitiesByName(request, response)
-
-        expect(stubbedActivitiesFindOne).to.have.been.calledWith({
-          where: { name: 'animal stich witchery' }
-        })
-        expect(response.send).to.have.been.calledWith(singleActivity)
-      })
-      it('returns a 404 error when no activity is found', async () => {
-        stubbedActivitiesFindOne.returns(null)
-
-        const request = { params: { name: 'animal stitch witchery' } }
-
-        await getActivitiesByName(request, response)
-
-        expect(stubbedActivitiesFindOne).to.have.been.calledWith({
-          where: { name: 'animal stitch witchery' },
-          include: [{ model: models.Activities }],
-        })
-        expect(response.sendStatus).to.have.been.calledWith(404)
-      })
-      it('returns a 500 error when call fails', async () => {
-        stubbedActivitiesFindOne.throws('Error!')
-
-        const request = { params: { name: 'animal stitch witchery' } }
-
-        await getActivitiesByName(request, response)
-
-        expect(stubbedActivitiesFindOne).to.have.been.calledWith({
-          where: { name: 'animal stitch witchery' },
-          include: [{ model: models.Activities }],
-        })
         expect(response.status).to.have.been.calledWith(500)
         expect(stubbedStatusSend).to.have.been.calledWith('Error while retrieving.')
       })
@@ -207,22 +164,22 @@ describe('Controllers - activities', () => {
       it('responds with success message when activity is deleted', async () => {
         stubbedActivitiesFindOne.returns(singleActivity)
 
-        const request = { params: { name: 'animal stich witchery' } }
+        const request = { params: { id: 1 } }
 
         await deleteActivities(request, response)
 
-        expect(stubbedActivitiesFindOne).to.have.been.calledWith({ where: { name: 'animal stich witchery' } })
-        expect(stubbedActivitiesDestroy).to.have.been.calledWith({ where: { name: 'animal stich witchery' } })
+        expect(stubbedActivitiesFindOne).to.have.been.calledWith({ where: { id: 1 } })
+        expect(stubbedActivitiesDestroy).to.have.been.calledWith({ where: { id: 1 } })
         expect(response.send).to.have.been.calledWith('Successfully deleted.')
       })
       it('returns a 404 error when no activity is found', async () => {
         stubbedActivitiesFindOne.returns(null)
 
-        const request = { params: { name: 'animal stitch witchery' } }
+        const request = { params: { id: 1 } }
 
         await deleteActivities(request, response)
 
-        expect(stubbedActivitiesFindOne).to.have.been.calledWith({ where: { monthId: 1 } })
+        expect(stubbedActivitiesFindOne).to.have.been.calledWith({ where: { id: 1 } })
         expect(stubbedActivitiesDestroy).to.have.callCount(0)
         expect(response.status).to.have.been.calledWith(404)
         expect(stubbedStatusSend).to.have.been.calledWith('Unknown activity')
@@ -232,12 +189,12 @@ describe('Controllers - activities', () => {
         stubbedActivitiesFindOne.returns(singleActivity)
         stubbedActivitiesDestroy.throws('Error!')
 
-        const request = { params: { name: 'animal stich witchery' } }
+        const request = { params: { id: 1 } }
 
         await deleteActivities(request, response)
 
-        expect(stubbedActivitiesFindOne).to.have.been.calledWith({ where: { name: 'animal stich witchery' } })
-        expect(stubbedActivitiesDestroy).to.have.been.calledWith({ where: { name: 'animal stich witchery' } })
+        expect(stubbedActivitiesFindOne).to.have.been.calledWith({ where: { id: 1 } })
+        expect(stubbedActivitiesDestroy).to.have.been.calledWith({ where: { id: 1 } })
         expect(response.status).to.have.been.calledWith(500)
         expect(stubbedStatusSend).to.have.been.calledWith('Error while deleting.')
       })
@@ -256,7 +213,7 @@ describe('Controllers - activities', () => {
 
         await addActivities(request, response)
 
-        expect(stubbedActivitiesCreate).to.have.been.calledWith({
+        expect(stubbedActivitiesFindOrCreate).to.have.been.calledWith({
           name: 'lucet and cord weaving',
           moonId: 1,
           monthId: 1,
@@ -270,13 +227,13 @@ describe('Controllers - activities', () => {
 
         await addActivities(request, response)
 
-        expect(stubbedActivitiesCreate).to.have.callCount(0)
+        expect(stubbedActivitiesFindOrCreate).to.have.callCount(0)
         expect(response.status).to.have.been.calledWith(404)
         expect(stubbedStatusSend).to.have.been.calledWith('Missing required data')
       })
 
       it('responds with 500 message when call fails', async () => {
-        stubbedActivitiesCreate.throws('Error!')
+        stubbedActivitiesFindOrCreate.throws('Error!')
 
         const request = {
           body: {
@@ -288,7 +245,7 @@ describe('Controllers - activities', () => {
 
         await addActivities(request, response)
 
-        expect(stubbedActivitiesCreate).to.have.been.calledWith({
+        expect(stubbedActivitiesFindOrCreate).to.have.been.calledWith({
           name: 'lucet and cord weaving',
           moonId: '1',
           monthId: '1',

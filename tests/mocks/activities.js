@@ -4,8 +4,8 @@ const activitiesList = [{
   moonId: 1,
 }, {
   name: 'scrying with earth',
-  monthId: 'December',
-  moonId: 'Oak',
+  monthId: 12,
+  moonId: 12,
 }]
 
 const postedActivity = {
