@@ -1,24 +1,87 @@
+doctype html
+
 <html>
-<head>
+  include partials/head.pug
   <link rel="stylesheet" href="css/styles.css" />
-</head>
 
 <body>
-  h1 Monthly Moons
-    h2
-      div(class="left-container")
-        div(class="tabs highlighted" id="getAll" onclick="updateSelected('getAll')")
-        span(class="get") GET
-        span /months
-      
-      div(class="right-container")
-        div(class="method" id="getAll")
-    h3 Method
-      div(class="get spacing") GET
-    h3 Route
-      div(class="spacing") http://localhost:2319/months
-    h3 Decription
-      div(class="spacing") Returns a list of each month and it's moon.
-</body>
+  div(class="container")
+    div(class="header")
 
-</html>
+  div(class="content")
+    div(class="title") Monthly Moons
+    div(class="doc-panels")
+      div(class="sidebar")
+        div(id= "get-months-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-months')")
+            span(class="get") GET
+            | /months
+        div(id= "get-months-name-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-months-name')")
+            span(class="get") GET
+            | /months/{name}
+        div(id= "get-months-slug-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-months-slug')")
+            span(class="get") GET
+            | /months/{slug}
+        div(id= "get-moons-end-point", class="end-point newRoute")
+          a(onclick="activateEndpoint('get-moons')")
+            span(class="get") GET
+            | /moons
+        div(id= "get-moons-name-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-moons-name')")
+            span(class="get") GET
+            | /moons/:name
+        div(id= "get-moons-monthId-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-moons-monthId')")
+            span(class="get") GET
+            | /moons/{monthId}
+        div(id= "get-activities-end-point", class="end-point newRoute")
+          a(onclick="activateEndpoint('get-activities')")
+            span(class="get") GET
+            | /activities
+        div(id= "get-activities-monthId-end-point", class="end-point ")
+          a(onclick="activateEndpoint('get-activities-monthId')")
+            span(class="get") GET
+            | /activities/{monthId}
+        div(id= "get-activities-moonId-end-point", class="end-point")
+          a(onclick="activateEndpoint('get-activities-moonId')")
+            span(class="get") GET
+            | /activities/{moonId}
+        div(id= "post-activities-end-point", class="end-point ")
+          a(onclick="activateEndpoint('post-activities')")
+            span(class="post") POST
+            | /activities
+        div(id= "delete-activities-name-end-point", class="end-point")
+          a(onclick="activateEndpoint('delete-activities-name')")
+            span(class="delete") DELETE
+            | /activities/{id}
+    div(id="get-months-doc-months", class="doc")
+      include partials/docs/months/getAll.pug
+    div(id="get-months-doc", class="doc hidden")
+      include partials/docs/months/getByName.pug
+    div(id="get-months-doc", class="doc hidden")
+      include partials/docs/months/getBySlug.pug
+    div(id="get-moons-doc", class="doc")
+      include partials/docs/moons/getAll.pug
+    div(id="get-moons-doc", class="doc hidden")
+      include partials/docs/moons/getByName.pug
+    div(id="get-moons-doc", class="doc hidden")
+      include partials/docs/moons/getByMonth.pug
+    div(id="get-activities-doc", class="doc")
+      include partials/docs/activities/getAll.pug
+    div(id="get-activities-doc", class="doc hidden")
+      include partials/docs/activities/getByName.pug
+    div(id="get-activities-doc", class="doc hidden")
+      include partials/docs/activities/getByMonth.pug
+    div(id="get-activities-doc", class="doc hidden")
+      include partials/docs/activities/getByMoon.pug
+    div(id="post-activities-doc", class="doc hidden")
+      include partials/docs/activities/post.pug
+    div(id="delete-activities-doc", class="doc hidden")
+      include partials/docs/activities/delete.pug
+    
+    
+    
+        
+        
