@@ -1,33 +1,33 @@
 const activitiesList = [{
   name: 'animal stitch witchery',
+  description: 'Crafting to connect your inner power.',
   monthId: 1,
-  moonId: 1,
 }, {
   name: 'scrying with earth',
-  monthId: 12,
+  description: 'The grounding wisdom of stones and bones.',
   moonId: 12,
 }]
 
 const postedActivity = {
-  name: 'lacet and cord weaving',
-  monthIdId: 1,
-  moonId: 1,
+  name: 'lucet and cord weaving',
+  description: 'Crafting to connect your inner power.',
+  monthId: 1,
 }
 
 const singleActivity = {
   name: 'animal stitch witchery',
+  description: 'Crafting to connect your inner power.',
   monthId: 1,
-  moonId: 1,
 }
 
 const relatedActivities = [{
   name: 'animal stitch witchery',
+  description: 'Crafting to connect your inner power.',
   monthId: 1,
-  moonId: 1,
 }, {
-  name: 'lacet and cord weaving',
+  name: 'lucet and cord weaving',
+  description: 'Creating your reality and strengthening your resolve.',
   monthId: 1,
-  moon: 1,
 }]
 
 module.exports = { activitiesList, postedActivity, singleActivity, relatedActivities }

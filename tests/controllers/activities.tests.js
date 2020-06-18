@@ -10,7 +10,6 @@ const { postedActivity, singleActivity, relatedActivities, activitiesList } = re
 const {
   getAllActivities,
   getActivitiesByMonth,
-  getActivitiesByMoon,
   addActivities,
   deleteActivities,
 } = require('../../controllers/activities')
@@ -74,49 +73,6 @@ describe('Controllers - activities', () => {
       })
     })
 
-    describe('getActvitiesByMoon', () => {
-      it('retrieves the activities associated with the provided moon', async () => {
-        stubbedActivitiesFilter.returns(relatedActivities)
-
-        const request = { params: { moonId: 1 } }
-
-        await getActivitiesByMoon(request, response)
-
-        expect(stubbedActivitiesFilter).to.have.been.calledWith({
-          where: { moonId: 1 },
-          include: [{ model: models.Activities }],
-        })
-        expect(response.send).to.have.been.calledWith(relatedActivities)
-      })
-      it('returns a 404 error when no moon is found', async () => {
-        stubbedActivitiesFilter.returns(null)
-
-        const request = { params: { moonId: 1 } }
-
-        await getActivitiesByMoon(request, response)
-
-        expect(stubbedActivitiesFilter).to.have.been.calledWith({
-          where: { moonId: 1 },
-          include: [{ model: models.Activities }],
-        })
-        expect(response.status).to.have.been.calledWith(404)
-      })
-      it('returns a 500 error when call fails', async () => {
-        stubbedActivitiesFilter.throws('Error!')
-
-        const request = { params: { moonId: 1 } }
-
-        await getActivitiesByMoon(request, response)
-
-        expect(stubbedActivitiesFilter).to.have.been.calledWith({
-          where: { moonId: 1 },
-          include: [{ model: models.Activities }],
-        })
-        expect(response.status).to.have.been.calledWith(500)
-        expect(stubbedStatusSend).to.have.been.calledWith('Error while retrieving.')
-      })
-    })
-
     describe('getActvitiesByMonth', () => {
       it('retrieves the activities associated with the provided month', async () => {
         stubbedActivitiesFilter.returns(relatedActivities)
@@ -131,7 +87,7 @@ describe('Controllers - activities', () => {
         })
         expect(response.send).to.have.been.calledWith(relatedActivities)
       })
-      it('returns a 404 error when no moon is found', async () => {
+      it('returns a 404 error when no month is found', async () => {
         stubbedActivitiesFilter.returns(null)
 
         const request = { params: { monthId: 1 } }
@@ -149,7 +105,7 @@ describe('Controllers - activities', () => {
 
         const request = { params: { monthId: 1 } }
 
-        await getActivitiesByMoon(request, response)
+        await getActivitiesByMonth(request, response)
 
         expect(stubbedActivitiesFilter).to.have.been.calledWith({
           where: { monthId: 1 },
@@ -206,7 +162,7 @@ describe('Controllers - activities', () => {
         const request = {
           body: {
             name: 'lucet and cord weaving',
-            moonId: 1,
+            description: 'Creating your reality and strengthening your resolve.',
             monthId: 1,
           }
         }
@@ -215,7 +171,7 @@ describe('Controllers - activities', () => {
 
         expect(stubbedActivitiesFindOrCreate).to.have.been.calledWith({
           name: 'lucet and cord weaving',
-          moonId: 1,
+          description: 'Creating your reality and strengthening your resolve.',
           monthId: 1,
         })
         expect(response.status).to.be.calledWith(201)
@@ -238,7 +194,7 @@ describe('Controllers - activities', () => {
         const request = {
           body: {
             name: 'lucet and cord weaving',
-            moonId: 1,
+            description: 'Creating your reality and strengthening your resolve.',
             monthId: 1,
           }
         }
@@ -247,7 +203,7 @@ describe('Controllers - activities', () => {
 
         expect(stubbedActivitiesFindOrCreate).to.have.been.calledWith({
           name: 'lucet and cord weaving',
-          moonId: '1',
+          description: 'Creating your reality and strengthening your resolve.',
           monthId: '1',
         })
         expect(response.status).to.have.been.calledWith(500)

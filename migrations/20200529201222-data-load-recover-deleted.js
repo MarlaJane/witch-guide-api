@@ -9,7 +9,7 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    await queryInterface.bulkInsert('months', [
+    await queryInterface.bulkInsert('Months', [
       { name: 'January', slug: 'jan' },
       { name: 'February', slug: 'feb' },
       { name: 'March', slug: 'march' },
@@ -25,7 +25,7 @@ module.exports = {
       { name: 'Situational', slug: 'misc' },
     ])
 
-    await queryInterface.bulkInsert('moons', [
+    await queryInterface.bulkInsert('Moons', [
       { name: 'Wolf', monthId: 1 },
       { name: 'Storm', monthId: 2 },
       { name: 'Seed', monthId: 3 },
@@ -41,7 +41,7 @@ module.exports = {
       { name: 'Blue', monthId: 13 },
     ])
 
-    await queryInterface.bulkInsert('activities', [
+    await queryInterface.bulkInsert('Activities', [
       { name: 'animal stich witchery', monthId: 1, moonId: 1, },
       { name: 'candle craft', monthId: 2, moonId: 2, },
       { name: 'scrying with air', monthId: 3, moonId: 3, },
@@ -67,10 +67,10 @@ module.exports = {
       return queryInterface.dropTable('users');
     */
 
-    await queryInterface.bulkDelete('months')
-    await queryInterface.bulkDelete('moons')
+    await queryInterface.bulkDelete('Months')
+    await queryInterface.bulkDelete('Moons')
 
-    return queryInterface.bulkDelete('activities')
+    return queryInterface.bulkDelete('Activities')
   }
 }
 

@@ -10,22 +10,6 @@ const getAllActivities = async (request, response) => {
   }
 }
 
-const getActivitiesByMoon = async (request, response) => {
-  try {
-    const { moonId } = request.params
-
-    const foundMoon = await models.Activities.findOne({
-      where: { moonId }
-    })
-
-    return foundMoon
-      ? response.send(foundMoon)
-      : response.sendStatus(404)
-  } catch (error) {
-    return response.status(500).send('Error')
-  }
-}
-
 const getActivitiesByMonth = async (request, response) => {
   try {
     const { monthId } = request.params
@@ -44,16 +28,14 @@ const getActivitiesByMonth = async (request, response) => {
 
 const addActivities = async (request, response) => {
   try {
-    const { name, moonId, monthId } = request.body
+    const { name, monthId } = request.body
 
 
-    if (!name || !moonId || !monthId) {
+    if (!name || !monthId) {
       return response.status(400).send('Please provide requested data.')
     }
 
-    const [newActivity] = await models.Activities.findOrCreate({ where: { name }, defaults: { moonId, monthId } })
-
-    Promise.resolve(newActivity)
+    const [newActivity] = await models.Activities.findOrCreate({ where: { name }, defaults: { monthId } })
 
     return response.status(201).send(newActivity)
   } catch (error) {
@@ -84,7 +66,6 @@ const deleteActivities = async (request, response) => {
 module.exports = {
   getAllActivities,
   getActivitiesByMonth,
-  getActivitiesByMoon,
   addActivities,
   deleteActivities,
 }

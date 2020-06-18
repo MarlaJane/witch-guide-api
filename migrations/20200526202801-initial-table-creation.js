@@ -35,11 +35,11 @@ module.exports = {
       deletedAt: { type: Sequelize.DATE },
     })
 
-    await queryInterface.createTable('activities', {
+    await queryInterface.createTable('Activities', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       name: { type: Sequelize.STRING, allowNull: false },
-      monthId: { type: Sequelize.INTEGER, references: { model: 'Months', key: 'name' } },
-      moonId: { type: Sequelize.INTEGER, references: { model: 'Months', key: 'name' } },
+      monthId: { type: Sequelize.INTEGER, references: { model: 'Months', key: 'id' } },
+      moonId: { type: Sequelize.INTEGER, references: { model: 'Moons', key: 'id' } },
       createdAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,

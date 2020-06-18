@@ -1,7 +1,8 @@
 const magicalMonth = {
   month: [{
     January: [{
-      moon: Wolf[{
+      moon: [{
+        name: 'Wolf',
         new_and_waxing: 'Grounding, healing, and gaining knowledge about ones self.',
         full: 'Self-acceptence, belonging, and belief in yourself and your power.',
         waning_and_dark: 'Letting go of insecurties. Banishing ill health and bad luck.'
@@ -66,7 +67,8 @@ const magicalMonth = {
       }]
     }],
     February: [{
-      moon: Storm[{
+      moon: [{
+        name: 'Storm',
         new_and_waxing: 'Increasing awareness of your shadow self and subconcious.',
         full: 'Divining messages from dreams and emotions. Reawakening visions.',
         waning_and_dark: 'Purification, clearing, and cleansing of emotions and space.'
@@ -122,7 +124,7 @@ const magicalMonth = {
         candle_craft: [{
           purpose: 'Bright magic for the dark of winter.',
           // artifacts:
-          howTo: '',// this will take a bit, come back later
+          howTo: '', // this will take a bit, come back later
         }],
         power_in_the_darkness: [{
           purpose: 'Magic to prepare for spring.',
@@ -136,7 +138,8 @@ const magicalMonth = {
       // imbolc dates?
     }],
     March: [{
-      moon: Seed[{
+      moon: [{
+        name: 'Seed',
         new_and_waxing: 'Growing things, starting new projects and planning for success.',
         full: 'Setting intentions and visualizing the outcome, taking action, making change.',
         waning_and_dark: 'Banishing anxiety or cynicism about change and starting new things.'
@@ -175,7 +178,7 @@ const magicalMonth = {
       activities: [{
         scrying_with_air: [{
           purpose: 'Listening to the wisdom on the wind.',
-          howTo: '',// woof
+          howTo: '', // woof
         }],
         divination_basics: [{
           purpose: 'Listening to the wisdom on the wind.',
@@ -194,7 +197,8 @@ const magicalMonth = {
       // once again, dates?
     }],
     April: [{
-      moon: Pink[{
+      moon: [{
+        name: 'Pink',
         new_and_waxing: 'Starting new projects, taking action, and following your curiosity.',
         full: 'Energy, strength, growth, happieness, and resurrection of your true self.',
         waning_and_dark: 'Reflecting on self-doubt and inaction, then banishing any issues.'
@@ -245,7 +249,8 @@ const magicalMonth = {
       }],
     }],
     May: [{
-      moon: Flower[{
+      moon: [{
+        name: 'Flower',
         new_and_waxing: 'Attracting love, passion, abundance, and increasing vitality.',
         full: 'Ignighting your power, bringing your dreams to life, and cultivating your spirituality.',
         waning_and_dark: 'Banishing fears and releasing resentment towards those you love.'
@@ -284,7 +289,8 @@ const magicalMonth = {
       }] // there is a ton of stuff related to beltane...
     }],
     June: [{
-      moon: honey[{
+      moon: [{
+        name: 'Honey',
         new_and_waxing: 'Increasing confidence, abundance, and making new friends.',
         full: 'Protection, celebrating your success, and divination for your higher self.',
         waning_and_dark: 'Releasing self doubt, perfectionism, and negative emotions.'
@@ -335,7 +341,8 @@ const magicalMonth = {
       }]
     }],
     July: [{
-      moon: Thunder[{
+      moon: [{
+        name: 'Thunder',
         new_and_waxing: 'Increasing confidence in your voice, vision, and creative expression.',
         full: 'Divination for your highest self and discovering your souls purpose.',
         waning_and_dark: 'Releasing emotional patterns that are holding back your true self.'
@@ -378,8 +385,9 @@ const magicalMonth = {
         affirmation: 'I am ready to see new wisdom and insights.',
       }]
     }],
-    August: Corn[{
+    August: [{
       moon: [{
+        name: 'Corn',
         new_and_waxing: ' Increasing abundance, success, playfullness, and fufillment.',
         full: 'Connecting to your guiding light and intuition. Gratitude and protection.',
         waning_and_dark: 'Releasing feelings of scarcity, unworthiness, or boredom.'
@@ -423,7 +431,6 @@ const magicalMonth = {
       }],
       activities: [{
         celtic_knots: [{}],
-        bracelets: [{}],
         spellcraft: [{}],
         ritual_bread: [{}],
         spellcasting_icepops: [{}],
@@ -431,7 +438,8 @@ const magicalMonth = {
       }]
     }],
     September: [{
-      moon: Harvest[{
+      moon: [{
+        name: 'Harvest',
         new_and_waxing: 'Accepting loss. Recovering from grief. Preparing for change.',
         full: 'Assessment and balance. Finding the courage to make change, transfrom, and or let go.',
         waning_and_dark: ' Releasing bitterness, attatchment, and things that no longer serve you.'
@@ -467,7 +475,8 @@ const magicalMonth = {
       }]
     }],
     October: [{
-      moon: Hunters[{
+      moon: [{
+        name: 'Hunters',
         new_and_waxing: 'Learning and healthing from the past. Increasing psychic awareness.',
         full: 'Transformation and divining messages from ancestors and spirit guides.',
         waning_and_dark: 'Realease from old emotional patterns, beliefs, and attatchments.'
@@ -503,7 +512,8 @@ const magicalMonth = {
       }]
     }],
     November: [{
-      moon: Snow[{
+      moon: [{
+        name: 'Snow',
         new_and_waxing: 'Increasing coziness, comfort at home, and the simple joys of life.',
         full: 'Interconnectedness and spiritual transcendence. Connection with others.',
         waning_and_dark: 'Inward reflection. Releasing sorrow and feelings of isolation.'
@@ -534,13 +544,14 @@ const magicalMonth = {
       }],
       food: [{}],
       activities: [{
-        rituals_of_the_unknown: [{}],
+        ritual_of_the_unknown: [{}],
         words_of_power: [{}],
         affirmation: 'I rest, relax, and sit in peace with the unknown.'
       }]
     }],
     December: [{
-      moon: Oak[{
+      moon: [{
+        name: 'Oak',
         new_and_waxing: 'Increasing rest and relaxation. Enhancing a jolly mood and spirit.',
         full: 'Rebirth and transformation. Recognizing your brilliance and light.',
         waning_and_dark: 'Releasing to the universe. Respite and surrender to the unknown.'
@@ -583,3 +594,6 @@ const magicalMonth = {
     }],
   }]
 }
+
+
+module.exports = magicalMonth
